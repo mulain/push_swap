@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 20:58:14 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/19 20:40:26 by wmardin          ###   ########.fr       */
+/*   Created: 2022/05/03 20:18:10 by wmardin           #+#    #+#             */
+/*   Updated: 2022/05/28 10:37:08 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#include "libft.h"
 
-# define PUSH_SWAP_H
-# include "libft/include/libft.h"
-# include <stdio.h>
-
-int		main(int argc, char **argv);
-int		*ft_errorcheck(int argc, char **argv);
-int		ft_checkduplicate(int *ints, int argc);
-
-#endif
+/*
+c: The character to output.
+fd: The file descriptor on which to write.
+return: none
+Outputs the character ’c’ to the given file
+descriptor.
+*/
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

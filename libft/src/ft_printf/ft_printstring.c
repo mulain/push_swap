@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_printstring.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 20:58:14 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/19 20:40:26 by wmardin          ###   ########.fr       */
+/*   Created: 2022/05/16 15:47:38 by wmardin           #+#    #+#             */
+/*   Updated: 2022/05/19 09:11:33 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#include "ft_printf.h"
 
-# define PUSH_SWAP_H
-# include "libft/include/libft.h"
-# include <stdio.h>
+static int	stringlength(const char *s)
+{
+	int	i;
 
-int		main(int argc, char **argv);
-int		*ft_errorcheck(int argc, char **argv);
-int		ft_checkduplicate(int *ints, int argc);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
-#endif
+int	ft_printstring(char *str)
+{
+	if (!str)
+		return (write (1, "(null)", 6));
+	return (write(1, str, stringlength(str)));
+}

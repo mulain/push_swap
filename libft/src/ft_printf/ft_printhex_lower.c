@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_printhex_lower.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 20:58:14 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/19 20:40:26 by wmardin          ###   ########.fr       */
+/*   Created: 2022/05/17 18:31:09 by wmardin           #+#    #+#             */
+/*   Updated: 2022/05/28 10:18:33 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#include "ft_printf.h"
 
-# define PUSH_SWAP_H
-# include "libft/include/libft.h"
-# include <stdio.h>
+int	ft_printhex_lower(unsigned int c)
+{
+	int	prints;
 
-int		main(int argc, char **argv);
-int		*ft_errorcheck(int argc, char **argv);
-int		ft_checkduplicate(int *ints, int argc);
-
-#endif
+	prints = 1;
+	if (c >= 16)
+		prints += ft_printhex_lower(c / 16);
+	c %= 16;
+	write(1, &"0123456789abcdef"[c], 1);
+	return (prints);
+}

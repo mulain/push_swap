@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_printunsignedint.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 20:58:14 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/19 20:40:26 by wmardin          ###   ########.fr       */
+/*   Created: 2022/05/18 19:13:47 by wmardin           #+#    #+#             */
+/*   Updated: 2022/05/18 19:33:43 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#include "ft_printf.h"
 
-# define PUSH_SWAP_H
-# include "libft/include/libft.h"
-# include <stdio.h>
+int	ft_printunsignedint(unsigned int c)
+{
+	int	prints;
 
-int		main(int argc, char **argv);
-int		*ft_errorcheck(int argc, char **argv);
-int		ft_checkduplicate(int *ints, int argc);
-
-#endif
+	prints = 1;
+	if (c >= 10)
+		prints += ft_printint(c / 10);
+	c = c % 10 + 48;
+	write(1, &c, 1);
+	return (prints);
+}

@@ -3,40 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 20:56:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/12 19:10:15 by wmardin          ###   ########.fr       */
+/*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
+/*   Updated: 2022/06/19 20:26:20 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
+	t_list	*stack_a;
+	int		*ints;
 	int		i;
-	t_list	**lst;
+	t_list	*temp;
 
+	ints = ft_errorcheck(argc, argv);
+	if (!ints)
+		return (write(2, "Error", 5));
 	i = 1;
+	stack_a = NULL;
 	while (i < argc)
 	{
-		if (ft_isnumberformat(argv[i]) == 0)
-			return (write (2, "Error\n", 6));
-	}
-	i = 1;
-	lst = NULL;
-	while (i < argc)
-	{
-		ft_lstadd_back(lst, ft_lstnew(argv[i]));
-		ft_strlen(argv[i]);
-		printf("test4\n");
+		ft_lstadd_back(&stack_a, ft_lstnew(ints + i));
 		i++;
 	}
-	printf("%p knudel\n", lst);
-	printf("Hello6\n");
-	/* while (temp->next)
+	temp = stack_a;
+	while (temp)
 	{
-		printf("%i\n", temp->content);
+		printf("%i\n", *(int *)temp->content);
 		temp = temp->next;
-	} */
+	}
 }
