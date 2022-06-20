@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/19 20:26:20 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/06/20 21:08:17 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 
 	ints = ft_errorcheck(argc, argv);
 	if (!ints)
-		return (write(2, "Error", 5));
+		return (write(2, "Error\n", 6));
 	i = 1;
 	stack_a = NULL;
 	while (i < argc)

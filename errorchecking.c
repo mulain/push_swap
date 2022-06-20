@@ -3,27 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   errorchecking.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:56:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/19 20:53:19 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/06/20 21:49:51 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isofintsize(int argc, char **argv)
+int	ft_isofintsize(char *argv)
 {
 	int		i;
 
-	i = 1;
-	while (argv[i])
+	printf ("%s\n", argv);
+	i = 0;
+	if (argv[0] == '-')
 	{
-		
+		if (ft_strncmp("-2147483648", argv, 11) < 0)
+		{
+			printf("%i neg\n", ft_strncmp("-2147483648", argv, 11));
+			return (0);
+		}	
 	}
+	else if (ft_strncmp("2147483647", argv, 11) < 0)
+	{	
+		printf("%i pos\n", ft_strncmp("2147483648", argv, 11));
+		return (0);
+	}
+	return (1);
 }
 
-int	ft_checkduplicate(long long *ints, int argc)
+int	ft_checkduplicate(int *ints, int argc)
 {
 	int		i;
 	int		j;
@@ -51,8 +62,6 @@ int	*ft_errorcheck(int argc, char **argv)
 
 	if (argc < 3)
 		return (NULL);
-	if (!ft_isofintsize(argc, argv))
-		return (NULL);
 	i = 0;
 	ints = malloc(argc * sizeof(int));
 	while (++i < argc)
@@ -60,6 +69,13 @@ int	*ft_errorcheck(int argc, char **argv)
 		if (!ft_isnumberformat(argv[i]))
 		{
 			free(ints);
+			write (1,"HERRO\n",6);
+			return (NULL);
+		}
+		if (!ft_isofintsize(argv[i]))
+		{
+			free(ints);
+			write (1,"HER2werqweRO\n",6);
 			return (NULL);
 		}
 		ints[i] = ft_atoi(argv[i]);
