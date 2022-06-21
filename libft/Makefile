@@ -6,7 +6,7 @@
 #    By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/26 13:39:51 by wmardin           #+#    #+#              #
-#    Updated: 2022/06/12 19:17:41 by wmardin          ###   ########.fr        #
+#    Updated: 2022/06/12 17:57:43 by wmardin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ SRC =	$(PATH_ft_is)/ft_isalnum.c\
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
+	@$(AR) $(NAME) $(OBJ)
 	@echo '$(NAME) created'
 
 #$(OBJ):

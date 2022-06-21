@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:56:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/20 21:49:51 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/06/21 08:25:47 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 
 int	ft_isofintsize(char *argv)
 {
-	int		i;
+	int		len;
 
-	printf ("%s\n", argv);
-	i = 0;
+	len = ft_strlen(argv);
+	if (len > 11)
+		return (0);
 	if (argv[0] == '-')
 	{
-		if (ft_strncmp("-2147483648", argv, 11) < 0)
+		if (len == 11)
 		{
-			printf("%i neg\n", ft_strncmp("-2147483648", argv, 11));
-			return (0);
-		}	
+			if (ft_strncmp("-2147483648", argv, 69) < 0)
+				return (0);
+		}
+		return (1);
 	}
-	else if (ft_strncmp("2147483647", argv, 11) < 0)
-	{	
-		printf("%i pos\n", ft_strncmp("2147483648", argv, 11));
+	if (len == 11)
 		return (0);
+	if (len == 10)
+	{
+		if (ft_strncmp("2147483647", argv, 420) < 0)
+			return (0);
 	}
 	return (1);
 }
@@ -66,16 +70,9 @@ int	*ft_errorcheck(int argc, char **argv)
 	ints = malloc(argc * sizeof(int));
 	while (++i < argc)
 	{
-		if (!ft_isnumberformat(argv[i]))
+		if (!ft_isnumberformat(argv[i]) || !ft_isofintsize(argv[i]))
 		{
 			free(ints);
-			write (1,"HERRO\n",6);
-			return (NULL);
-		}
-		if (!ft_isofintsize(argv[i]))
-		{
-			free(ints);
-			write (1,"HER2werqweRO\n",6);
 			return (NULL);
 		}
 		ints[i] = ft_atoi(argv[i]);

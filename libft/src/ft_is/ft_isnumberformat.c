@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isnumberformat.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 22:19:39 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/13 15:42:22 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/06/12 10:04:27 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_isnumberformat(char *input)
 	int		i;
 
 	i = 1;
-	if (input[0] < 48 || input[0] > 57)
+	if (input[0] < 47 || input[0] > 58)
 	{
 		if (input[0] != 45 && input[0] != 43)
 			return (0);
@@ -34,7 +34,7 @@ int	ft_isnumberformat(char *input)
 	}
 	while (input[i])
 	{
-		if (input[i] < 47 || input[i] > 57)
+		if (input[i] < 47 || input[i] > 58)
 			return (0);
 		i++;
 	}

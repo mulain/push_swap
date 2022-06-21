@@ -20,9 +20,9 @@ Return Value: The converted value.
 */
 int	ft_atoi(const char *nptr)
 {
-	int		i;
-	int		sign;
-	int		num;
+	int	i;
+	int	sign;
+	int	num;
 
 	i = 0;
 	num = 0;
