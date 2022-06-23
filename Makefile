@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+         #
+#    By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 21:26:51 by wmardin           #+#    #+#              #
-#    Updated: 2022/06/23 19:43:23 by wmardin          ###   ########.fr        #
+#    Updated: 2022/06/23 22:15:18 by wmardin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 
 NAME =	push_swap.a
-SRC =	main.c errorcheck.c #makestacks.c
+SRC =	main.c errorcheck.c makestacks.c
 OBJ =	$(SRC:.c=.o)
 
 $(NAME): $(OBJ)
