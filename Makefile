@@ -6,7 +6,7 @@
 #    By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 21:26:51 by wmardin           #+#    #+#              #
-#    Updated: 2022/06/21 08:08:47 by wmardin          ###   ########.fr        #
+#    Updated: 2022/06/21 09:36:03 by wmardin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ $(NAME): $(OBJ)
 	@make -C ./libft
 	
 all: $(NAME)
-	$(CC) $(CFLAGS) libft/libft.a $(OBJ) main.c
+#	$(CC) $(CFLAGS) libft/libft.a $(OBJ) main.c
 	
 clean:
 	$(RM) $(OBJ)
