@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errorchecking.c                                    :+:      :+:    :+:   */
+/*   errorcheck.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:56:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/23 19:40:52 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/06/23 21:36:16 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,16 @@ int	ft_checkduplicate(int *ints, int argc)
 	int		j;
 
 	i = 0;
-	j = 0;
 	while (i + 1 < argc)
 	{
-		while (i + 1 < argc)
+		j = i + 1;
+		while (j < argc)
 		{
-			if (ints[i] == ints[i + 1])
+			if (ints[i] == ints[j])
 				return (0);
-			i++;
+			j++;
 		}
-		j++;
-		i += j;
+		i++;
 	}
 	return (1);
 }
