@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/23 22:17:30 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/13 09:41:57 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	main(int argc, char **argv)
 	ints = ft_errorcheck(argc, argv);
 	if (!ints)
 		return (write(2, "Error\n", 6));
-	i = 0;
 	stack_a = ft_makestack_a(ints, argc);
-	
-	
 	temp = stack_a;
 	while (temp)
 	{
