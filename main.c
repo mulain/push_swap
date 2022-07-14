@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/14 19:32:53 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/14 21:17:58 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 
 	temp = stack_a;
-	while (temp)
-	{
-		printf("%i\n", *(int *)temp->content);
-		temp = temp->next;
-	}
 	//ft_do_swap_a(&stack_a);
+	/* ft_do_push_b(&stack_a, &stack_b);
 	ft_do_push_b(&stack_a, &stack_b);
+	ft_do_push_b(&stack_a, &stack_b);
+	ft_do_push_b(&stack_a, &stack_b); */
+	ft_do_rotate_a(&stack_a);
 	temp = stack_a;
 	printf("Stack A:\n");
 	while (temp)
@@ -50,6 +49,5 @@ int	main(int argc, char **argv)
 		printf("%i\n", *(int *)temp->content);
 		temp = temp->next;
 	}
-	
 	// printf("list_a:%i\n", *(int *)stack_a->content);
 }

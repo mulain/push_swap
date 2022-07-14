@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_swap.c                                          :+:      :+:    :+:   */
+/*   do_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/14 14:43:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/14 20:58:31 by wmardin          ###   ########.fr       */
+/*   Created: 2022/07/14 20:30:25 by wmardin           #+#    #+#             */
+/*   Updated: 2022/07/14 21:13:26 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_do_swap_a(t_list **stack)
+void	ft_do_rotate_a(t_list **stack)
 {
-	ft_swap(stack);
-	write(1, "sa\n", 3);
+	ft_rotate(stack);
+	write(1, "ra\n", 3);
 }
 
-void	ft_do_swap_b(t_list **stack)
+void	ft_do_rotate_b(t_list **stack)
 {
-	ft_swap(stack);
-	write(1, "sb\n", 3);
+	ft_rotate(stack);
+	write(1, "rb\n", 3);
 }
 
-void	ft_do_swap_ab(t_list **stack_a, t_list **stack_b)
+void	ft_do_rotate_ab(t_list **stack_a, t_list **stack_b)
 {
-	ft_swap(stack_a);
-	ft_swap(stack_b);
-	write(1, "ss\n", 3);
+	ft_rotate(stack_a);
+	ft_rotate(stack_b);
+	write(1, "rr\n", 3);
 }
