@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/23 22:44:36 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/14 13:18:27 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,12 @@ int	main(int argc, char **argv)
 		printf("%i\n", *(int *)temp->content);
 		temp = temp->next;
 	}
+	ft_swap(&stack_a, NULL, 'f');
+	temp = stack_a;
+	while (temp)
+	{
+		printf("%i\n", *(int *)temp->content);
+		temp = temp->next;
+	}
+	// printf("list_a:%i\n", *(int *)stack_a->content);
 }
