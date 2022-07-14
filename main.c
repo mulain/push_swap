@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/14 13:18:27 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/14 19:32:53 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
+	t_list	*stack_b;
 	int		*ints;
 	t_list	*temp;
 
@@ -25,20 +26,30 @@ int	main(int argc, char **argv)
 	if (!ints)
 		return (write(2, "Error\n", 6));
 	stack_a = ft_makestack_a(ints, argc);
-	
-	
+	stack_b = NULL;
+
 	temp = stack_a;
 	while (temp)
 	{
 		printf("%i\n", *(int *)temp->content);
 		temp = temp->next;
 	}
-	ft_swap(&stack_a, NULL, 'f');
+	//ft_do_swap_a(&stack_a);
+	ft_do_push_b(&stack_a, &stack_b);
 	temp = stack_a;
+	printf("Stack A:\n");
 	while (temp)
 	{
 		printf("%i\n", *(int *)temp->content);
 		temp = temp->next;
 	}
+	temp = stack_b;
+	printf("Stack B:\n");
+	while (temp)
+	{
+		printf("%i\n", *(int *)temp->content);
+		temp = temp->next;
+	}
+	
 	// printf("list_a:%i\n", *(int *)stack_a->content);
 }

@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 14:11:04 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/14 19:22:05 by wmardin          ###   ########.fr       */
+/*   Created: 2022/07/14 14:43:59 by wmardin           #+#    #+#             */
+/*   Updated: 2022/07/14 15:23:07 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap(t_list **stack)
+void	ft_do_swap_a(t_list **stack)
 {
-	t_list	*node1;
-	t_list	*node2;
-	t_list	*node3;
-
-	node1 = *stack;
-	node2 = node1->next;
-	node3 = node2->next;
-	*stack = node2;
-	node2->next = node1;
-	node1->next = node3;
+	ft_swap(stack);
+	write(1, "sa\n", 3);
 }
 
-void	ft_push(t_list **stack_from, t_list **stack_to)
+void	ft_do_swap_b(t_list **stack)
 {
-	t_list	*node1;
-	t_list	*node2;
+	ft_swap(stack);
+	write(1, "sb\n", 3);
+}
 
-	if (!*stack_from)
-		return ;
-	node1 = *stack_from;
-	node2 = node1->next;
-	ft_lstadd_front(stack_to, node1);
-	*stack_from = node2;
+void	ft_do_swap_ss(t_list **stack_a, t_list **stack_b)
+{
+	ft_swap(stack_a);
+	ft_swap(stack_b);
+	write(1, "ss\n", 3);
 }
