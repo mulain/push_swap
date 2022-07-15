@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/15 21:25:26 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/15 22:47:50 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	main(int argc, char **argv)
 	printf("Stack A:\n");
 	while (temp)
 	{
-		printf("%i\n", *(int *)temp->content);
+		printf("%p\n", temp->rank);
+		//printf("%i\n", *(int *)temp->content);
 		temp = temp->next;
 	}
 	temp = stack_b;

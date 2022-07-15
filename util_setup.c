@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:56:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/15 21:30:29 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/15 22:44:00 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,20 +105,20 @@ void	ft_assignrank(t_list **stack_a, int argc)
 
 	i = 0;
 	temp = *stack_a;
-	printf("hello1\n");
-	*(int *)temp->rank = i;
-	printf("hello1\n");
+	temp->rank = &i;
+	printf("argc-1:%i\n", argc - 1);
 	while (i < argc - 1)
 	{
-		while (temp)
+		while (temp->next)
 		{
 			if (temp->next->rank == NULL && temp->content > temp->next->content)
 			{
 				temp->rank = NULL;
-				*(int *)temp->next->rank = i;
+				temp->next->rank = &i;
 			}
 			temp = temp->next;
 		}
+	temp = *stack_a;
 	i++;
 	}
 }
