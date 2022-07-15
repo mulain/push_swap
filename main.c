@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/14 21:17:58 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/15 21:25:26 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,7 @@ int	main(int argc, char **argv)
 		return (write(2, "Error\n", 6));
 	stack_a = ft_makestack_a(ints, argc);
 	stack_b = NULL;
-
-	temp = stack_a;
-	//ft_do_swap_a(&stack_a);
-	/* ft_do_push_b(&stack_a, &stack_b);
-	ft_do_push_b(&stack_a, &stack_b);
-	ft_do_push_b(&stack_a, &stack_b);
-	ft_do_push_b(&stack_a, &stack_b); */
-	ft_do_rotate_a(&stack_a);
+	ft_assignrank(&stack_a, argc);
 	temp = stack_a;
 	printf("Stack A:\n");
 	while (temp)

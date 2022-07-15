@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:58:14 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/14 21:13:57 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/15 16:39:50 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		*ft_errorcheck(int argc, char **argv);
 int		ft_checkduplicate(int *ints, int argc);
 int		ft_isofintsize(char *argv);
 t_list	*ft_makestack_a(int *ints, int argc);
+void	ft_assignrank(t_list **stack_a, int argc);
 
 void	ft_swap(t_list **stack);
 void	ft_push(t_list **stack_from, t_list **stack_to);

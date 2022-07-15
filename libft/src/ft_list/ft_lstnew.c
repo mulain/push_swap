@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:47:13 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/10 21:06:59 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/15 21:38:57 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ t_list	*ft_lstnew(void *content)
 		return (NULL);
 	new->content = content;
 	new->next = NULL;
+	new->rank = NULL;
 	return (new);
 }
