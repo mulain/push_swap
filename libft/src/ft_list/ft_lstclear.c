@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:28:08 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/10 21:06:42 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/17 14:07:19 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ and free(3).
 Finally, the pointer to the list must be set to
 NULL.
 */
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst, void (*del)(int))
 {
 	t_list	*temp1;
 	t_list	*temp2;

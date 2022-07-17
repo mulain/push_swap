@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/17 11:30:49 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/17 17:11:08 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ int	main(int argc, char **argv)
 	stack_a = ft_makestack_a(ints, argc);
 	stack_b = NULL;
 	ft_assignrank(&stack_a, argc);
+	while (!ft_stack_a_sorted(&stack_a))
+		ft_calculatepoints(&stack_a, &stack_b, argc);
 	temp = stack_a;
 	printf("Stack A:\n");
 	while (temp)
 	{
-		printf("content: %i; ", *(int *)temp->content);
+		printf("content: %i; ", temp->content);
 		printf("rank: %i\n", temp->rank);
 		temp = temp->next;
 	}
@@ -40,8 +42,7 @@ int	main(int argc, char **argv)
 	printf("Stack B:\n");
 	while (temp)
 	{
-		printf("%i\n", *(int *)temp->content);
+		printf("%i\n", temp->content);
 		temp = temp->next;
 	}
-	// printf("list_a:%i\n", *(int *)stack_a->content);
 }

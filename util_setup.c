@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:56:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/17 11:32:48 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/17 13:54:06 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_list	*ft_makestack_a(int *ints, int argc)
 	stack_a = NULL;
 	while (i < argc - 1)
 	{
-		ft_lstadd_back(&stack_a, ft_lstnew(ints + i));
+		ft_lstadd_back(&stack_a, ft_lstnew(ints[i]));
 		i++;
 	}
 	return (stack_a);

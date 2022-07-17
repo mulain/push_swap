@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 20:27:51 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/10 21:06:55 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/17 14:07:48 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ list resulting of the successive applications of
 the function ’f’. The ’del’ function is used to
 delete the content of a node if needed.
 */
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, int (*f)(int), void (*del)(int))
 {
 	t_list	*head_new;
 	t_list	*new;

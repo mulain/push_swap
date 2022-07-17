@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:48:27 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/10 21:06:45 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/17 14:04:49 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ the node’s content using the function ’del’ given
 as a parameter and free the node. The memory of
 ’next’ must not be freed.
 */
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_lstdelone(t_list *lst, void (*del)(int))
 {
 	if (!lst || !del)
 		return ;

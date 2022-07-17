@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:33:57 by wmardin           #+#    #+#             */
-/*   Updated: 2022/06/10 21:06:49 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/17 14:07:39 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ return: none
 Iterates the list ’lst’ and applies the function
 ’f’ on the content of each node.
 */
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstiter(t_list *lst, void (*f)(int))
 {
 	t_list	*temp;
 

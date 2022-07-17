@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 11:32:52 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/17 13:32:14 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/17 14:15:30 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ General structure:
 			-	Assign i to the rank of encountered node and reset rank
 				of currentranked node and assign currentranked to the
 				encountered node
+Instead of the following, i = 1 and argc - 1 is used (personal preference).
+The explanation for argc - 2 is kept because it explains the approach.
+It's just that instead of i = 0 and argc - 2, here i = 1 and argc - 1 is used.
 The first while loop uses i and argc - 2. Usually, argc - 1 would
 be used, because argc is still the initial argc including the 1 position
 for the program name. We have to decrement argc here again, because
@@ -56,20 +59,19 @@ void	ft_assignrank(t_list **stack, int argc)
 	t_list	*temp;
 	t_list	*currentranked;
 
-	i = 0;
-	while (i < argc - 2)
+	i = 1;
+	while (i < argc - 1)
 	{
-		temp = ft_getfirstunranked(stack);
-		temp->rank = i;
-		currentranked = temp;
-		while (temp->next)
+		currentranked = ft_getfirstunranked(stack);
+		currentranked->rank = i;
+		temp = currentranked->next;
+		while (temp)
 		{
-			if (temp->next->rank == -1
-				&& *(int *)currentranked->content > *(int *)temp->next->content)
+			if (temp->rank == -1 && currentranked->content > temp->content)
 			{
-				temp->next->rank = i;
+				temp->rank = i;
 				currentranked->rank = -1;
-				currentranked = temp->next;
+				currentranked = temp;
 			}
 			temp = temp->next;
 		}
