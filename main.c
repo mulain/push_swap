@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/17 17:11:08 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/17 23:46:20 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,18 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int		*ints;
 	t_list	*temp;
+	t_calc	*calc;
 
 	if (argc < 3)
 		return (0);
-	ints = ft_errorcheck(argc, argv);
-	if (!ints)
+	stack_a = ft_makestack_a(argc, argv);
+	if (!stack_a)
 		return (write(2, "Error\n", 6));
-	stack_a = ft_makestack_a(ints, argc);
 	stack_b = NULL;
 	ft_assignrank(&stack_a, argc);
-	while (!ft_stack_a_sorted(&stack_a))
-		ft_calculatepoints(&stack_a, &stack_b, argc);
+	//while (!ft_checkifsorted(&stack_a))
+	calc = ft_calculatepoints(stack_a, stack_b, argc);
 	temp = stack_a;
 	printf("Stack A:\n");
 	while (temp)
@@ -45,4 +44,6 @@ int	main(int argc, char **argv)
 		printf("%i\n", temp->content);
 		temp = temp->next;
 	}
+	printf("Calc.push_b:%p\n", *calc->push_b);
+	printf("Calc.push_a:%p\n", *calc->push_a);
 }

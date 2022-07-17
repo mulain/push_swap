@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:56:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/17 13:54:06 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/17 17:29:53 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_checkduplicate(int *ints, int argcm1)
 	return (1);
 }
 
-int	*ft_errorcheck(int argc, char **argv)
+int	*ft_makeintarray(int argc, char **argv)
 {
 	int		i;
 	int		*ints;
@@ -83,13 +83,17 @@ int	*ft_errorcheck(int argc, char **argv)
 	return (ints);
 }
 
-t_list	*ft_makestack_a(int *ints, int argc)
+t_list	*ft_makestack_a(int argc, char **argv)
 {
 	int		i;
+	int		*ints;
 	t_list	*stack_a;
 
 	i = 0;
 	stack_a = NULL;
+	ints = ft_makeintarray(argc, argv);
+	if (!ints)
+		return (NULL);
 	while (i < argc - 1)
 	{
 		ft_lstadd_back(&stack_a, ft_lstnew(ints[i]));
