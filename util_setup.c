@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:56:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/15 22:44:00 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/17 11:32:48 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,29 +96,4 @@ t_list	*ft_makestack_a(int *ints, int argc)
 		i++;
 	}
 	return (stack_a);
-}
-
-void	ft_assignrank(t_list **stack_a, int argc)
-{
-	int		i;
-	t_list	*temp;
-
-	i = 0;
-	temp = *stack_a;
-	temp->rank = &i;
-	printf("argc-1:%i\n", argc - 1);
-	while (i < argc - 1)
-	{
-		while (temp->next)
-		{
-			if (temp->next->rank == NULL && temp->content > temp->next->content)
-			{
-				temp->rank = NULL;
-				temp->next->rank = &i;
-			}
-			temp = temp->next;
-		}
-	temp = *stack_a;
-	i++;
-	}
 }
