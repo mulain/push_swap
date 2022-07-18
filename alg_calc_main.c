@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alg_calc_main.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:59:55 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/18 10:28:06 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/18 14:44:10 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,12 @@ t_list	*ft_calculatepoints(t_list *stack_a, t_list *stack_b, int argc)
 	temp = scorelist;
 	while (temp)
 	{
-		printf("whilecalc\n");
 		if (temp->content == 1)
 		{
 			temp->score = ft_calc_push_a(stack_a, stack_b, argc);
-			if (temp->score)
-				printf("tempscore:%p\n", *temp->score);
 		}
 		if (temp->content == 2)
 		{
-			printf("whilecalc cont 2\n");
 			temp->score = ft_calc_push_b(stack_a, stack_b, argc);
 		}
 		if (temp->content == 3)
