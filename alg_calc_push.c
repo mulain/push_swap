@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 19:47:04 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/17 22:26:35 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/18 10:31:23 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	*ft_calc_push_b(t_list *stack_a, t_list *stack_b, int argc)
 	*calc = 0;
 	if (!stack_a)
 		return (NULL);
-	calc += ft_delta(stack_a->rank, stack_a->next->rank);
-	calc += ft_delta(stack_a->rank, ft_lstlast(stack_a)->rank);
+	*calc += ft_delta(stack_a->rank, stack_a->next->rank);
+	*calc += ft_delta(stack_a->rank, ft_lstlast(stack_a)->rank);
 	return (calc);
 }
