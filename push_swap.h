@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:58:14 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/18 10:07:30 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/18 19:28:53 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,8 @@ int		*ft_calc_revrotate_ab(t_list *stack_a, t_list *stack_b, int argc);
 int		*ft_calc_swap_a(t_list *stack_a, t_list *stack_b, int argc);
 int		*ft_calc_swap_b(t_list *stack_a, t_list *stack_b, int argc);
 int		*ft_calc_swap_ab(t_list *stack_a, t_list *stack_b, int argc);
+
+void	ft_makeslices(t_list **stack_a, t_list **stack_b, int argc);
+void	ft_pushback(t_list **stack_a, t_list **stack_b);
 
 #endif

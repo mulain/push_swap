@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/18 10:29:58 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/18 19:29:11 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,37 @@ int	main(int argc, char **argv)
 		return (write(2, "Error\n", 6));
 	stack_b = NULL;
 	ft_assignrank(&stack_a, argc);
+	ft_makeslices(&stack_a, &stack_b, argc);
+	ft_pushback(&stack_a, &stack_b);
 	//while (!ft_checkifsorted(&stack_a))
-	pointlist = ft_calculatepoints(stack_a, stack_b, argc);
+	//pointlist = ft_calculatepoints(stack_a, stack_b, argc);
 	temp = stack_a;
-	printf("Stack A:\n");
+	printf("\nStack A:\n");
+	printf("________\n");
 	while (temp)
 	{
-		printf("content: %i; ", temp->content);
 		printf("rank: %i\n", temp->rank);
 		temp = temp->next;
 	}
 	temp = stack_b;
-	printf("Stack B:\n");
+	printf("\nStack B:\n");
+	printf("________\n");
 	while (temp)
 	{
-		printf("%i\n", temp->content);
+		printf("rank: %i\n", temp->rank);
 		temp = temp->next;
 	}
-	temp = pointlist;
-	while (temp)
-	{
-		if (temp->content == 1)
-		{
-			printf("Score push_a:%p\n", temp->score);
-		}
-		if (temp->content == 2)
-		{
-			printf("Score push_b:%i\n", *temp->score);
-		}
-		temp = temp->next;
-	}
+	//temp = pointlist;
+	// while (temp)
+	// {
+	// 	if (temp->content == 1)
+	// 	{
+	// 		printf("Score push_a:%p\n", temp->score);
+	// 	}
+	// 	if (temp->content == 2)
+	// 	{
+	// 		printf("Score push_b:%i\n", *temp->score);
+	// 	}
+	// 	temp = temp->next;
+	// }
 }
