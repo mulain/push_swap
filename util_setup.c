@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:56:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/17 17:29:53 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/18 21:02:32 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ t_list	*ft_makestack_a(int argc, char **argv)
 		ft_lstadd_back(&stack_a, ft_lstnew(ints[i]));
 		i++;
 	}
+	ft_assignrank(&stack_a, argc);
 	return (stack_a);
 }

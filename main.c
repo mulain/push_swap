@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/18 19:29:11 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/18 21:04:21 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		return (write(2, "Error\n", 6));
 	stack_b = NULL;
-	ft_assignrank(&stack_a, argc);
 	ft_makeslices(&stack_a, &stack_b, argc);
 	ft_pushback(&stack_a, &stack_b);
 	//while (!ft_checkifsorted(&stack_a))
@@ -47,6 +46,7 @@ int	main(int argc, char **argv)
 		printf("rank: %i\n", temp->rank);
 		temp = temp->next;
 	}
+	ft_free_stack(&stack_a);
 	//temp = pointlist;
 	// while (temp)
 	// {
