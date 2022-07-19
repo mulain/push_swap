@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:47:21 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/19 18:26:03 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/19 18:43:55 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_makeslices(t_list **stack_a, t_list **stack_b, int argc)
 			if (temp->rank == temp->next->rank + 1) //maybe work with delta?
 				ft_do_swap_a(stack_a);
 			else
-				ft_do_push_b(stack_a, stack_b);
+				ft_do_push_b(stack_a, stack_b); //identify node to swap. either node not in order (or surpassing an acceptable delta), or maybe detect a node cluster?
 			counter++;
 		}
 		else
