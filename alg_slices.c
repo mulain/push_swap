@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alg_slices.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:47:21 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/18 20:55:59 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/19 17:49:56 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,19 @@ void	ft_makeslices(t_list **stack_a, t_list **stack_b, int argc)
 
 	counter = 0;
 	argc--;
-	temp = *stack_a;
-	while (counter < argc - 3)
+	while (counter < argc - 3 && !ft_checkifsorted(stack_a))
 	{
+		temp = *stack_a;
 		if (temp->rank != 1 /* && temp->rank != argc / 2 */ && temp->rank != argc)
 		{
-			ft_do_push_b(stack_a, stack_b);
+			if (temp->rank == temp->next->rank + 1) //maybe work with delta?
+				ft_do_swap_a(stack_a);
+			else
+				ft_do_push_b(stack_a, stack_b);
 			counter++;
 		}
 		else
 			ft_do_rotate_a(stack_a);
-		temp = *stack_a;
 	}
 }
 
@@ -57,4 +59,27 @@ void	ft_pushback(t_list **stack_a, t_list **stack_b)
 		counter++;
 	}
 	printf("counter: %i\n", counter);
+}
+
+void	ft_finalrotation(t_list **stack, int argc)
+{
+	t_list	*temp;
+	int		rotate;
+
+	rotate = 0;
+	while (temp->rank != 1)
+	{
+		rotate++;
+		temp = temp->next;
+	}
+	if (rotate <= (argc - 1) / 2)
+	{
+		while ((*stack)->rank != 1)
+			ft_do_rotate_a(stack);
+	}
+	else
+	{
+		while ((*stack)->rank != 1)
+			ft_do_revrotate_a(stack);
+	}
 }

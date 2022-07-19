@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/18 21:04:21 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/19 17:31:32 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		return (write(2, "Error\n", 6));
 	stack_b = NULL;
+	if (ft_checkifsorted(&stack_a))
+	{
+		ft_free_stack(&stack_a);
+		return (write(1, "\n", 1));
+	}
 	ft_makeslices(&stack_a, &stack_b, argc);
 	ft_pushback(&stack_a, &stack_b);
-	//while (!ft_checkifsorted(&stack_a))
+	ft_finalrotation(&stack_a, argc);
 	//pointlist = ft_calculatepoints(stack_a, stack_b, argc);
 	temp = stack_a;
 	printf("\nStack A:\n");
