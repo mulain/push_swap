@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/19 17:31:32 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/19 18:08:04 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		return (write(2, "Error\n", 6));
 	stack_b = NULL;
-	if (ft_checkifsorted(&stack_a))
+	if (ft_checkifsorted(&stack_a, argc))
 	{
 		ft_free_stack(&stack_a);
 		return (write(1, "\n", 1));
@@ -52,17 +52,4 @@ int	main(int argc, char **argv)
 		temp = temp->next;
 	}
 	ft_free_stack(&stack_a);
-	//temp = pointlist;
-	// while (temp)
-	// {
-	// 	if (temp->content == 1)
-	// 	{
-	// 		printf("Score push_a:%p\n", temp->score);
-	// 	}
-	// 	if (temp->content == 2)
-	// 	{
-	// 		printf("Score push_b:%i\n", *temp->score);
-	// 	}
-	// 	temp = temp->next;
-	// }
 }

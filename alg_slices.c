@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:47:21 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/19 17:49:56 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/19 18:26:03 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ void	ft_makeslices(t_list **stack_a, t_list **stack_b, int argc)
 	t_list	*temp;
 
 	counter = 0;
-	argc--;
-	while (counter < argc - 3 && !ft_checkifsorted(stack_a))
+	while (counter < argc - 3 && !ft_checkifsorted(stack_a, argc))
 	{
 		temp = *stack_a;
-		if (temp->rank != 1 /* && temp->rank != argc / 2 */ && temp->rank != argc)
+		if (temp->rank != 1 && temp->rank != argc - 1)
 		{
 			if (temp->rank == temp->next->rank + 1) //maybe work with delta?
 				ft_do_swap_a(stack_a);
