@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_setup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:56:59 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/19 16:09:07 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/20 13:20:44 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,18 @@ t_list	*ft_makestack_a(int argc, char **argv)
 	ft_assignrank(&stack_a, argc);
 	free(ints);
 	return (stack_a);
+}
+
+void	ft_free_stack(t_list **stack)
+{
+	t_list	*temp1;
+	t_list	*temp2;
+
+	temp1 = *stack;
+	while (temp1)
+	{
+		temp2 = temp1;
+		temp1 = temp1->next;
+		free(temp2);
+	}
 }

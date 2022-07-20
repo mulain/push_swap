@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alg_utils.c                                        :+:      :+:    :+:   */
+/*   algo_util_get.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:05:20 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/20 12:03:39 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/20 13:27:44 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_delta(int i, int j)
+int	ft_getrankdelta(int i, int j)
 {
 	i -= j;
 	if (i < 0)
@@ -24,7 +24,7 @@ int	ft_delta(int i, int j)
 1 -> rotate
 2 -> revrotate
 */
-int	ft_rotatedirection(t_list **stack, int noderank)
+int	ft_getrotatedir(t_list **stack, int noderank)
 {
 	t_list	*temp;
 	int		rotate;
