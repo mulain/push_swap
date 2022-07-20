@@ -6,7 +6,7 @@
 #    By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 21:26:51 by wmardin           #+#    #+#              #
-#    Updated: 2022/07/20 13:26:52 by wmardin          ###   ########.fr        #
+#    Updated: 2022/07/20 13:41:10 by wmardin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ fclean: clean
 re: fclean all
 
 test:
-	$(CC) $(CFLAGS) $(SRC) libft/libft.a
+	$(CC) $(CFLAGS) $(SRC) libft/libft.a -o push_swap
 
 testnoflag:
 	$(CC) $(SRC) libft/libft.a
