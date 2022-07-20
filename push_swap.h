@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:58:14 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/19 18:35:34 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/20 12:12:55 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,28 @@ t_list	*ft_makestack_a(int argc, char **argv);
 void	ft_assignrank(t_list **stack_a, int argc);
 t_list	*ft_getfirstunranked(t_list **stack);
 
-//util_checkifsorted
-int		ft_checkifsorted(t_list **stack, int argc);
+//util_checking
+int		ft_checkifordered(t_list **stack, int argc);
+int		ft_checkifdone(t_list **stack, int argc);
 
-//alg_calc_main
-t_list	*ft_calculatepoints(t_list *stack_a, t_list *stack_b, int argc);
+//alg_slices
+void	ft_makeslices(t_list **stack_a, t_list **stack_b, int argc);
+void	ft_pushback(t_list **stack_a, t_list **stack_b);
+void	ft_finalrotation(t_list **stack);
+
+//alg_utils
 int		ft_delta(int i, int j);
+int		ft_rotatedirection(t_list **stack, int noderank);
+int		ft_getinsertionrank(t_list **stack, int noderank);
 
 //util_operations
 void	ft_swap(t_list **stack);
 void	ft_push(t_list **stack_from, t_list **stack_to);
 void	ft_rotate(t_list **stack);
 void	ft_revrotate(t_list **stack);
+
+//util_cleanup
+void	ft_free_stack(t_list **stack);
 
 //do* files
 void	ft_do_swap_a(t_list **stack);
@@ -54,25 +64,5 @@ void	ft_do_rotate_ab(t_list **stack_a, t_list **stack_b);
 void	ft_do_revrotate_a(t_list **stack);
 void	ft_do_revrotate_b(t_list **stack);
 void	ft_do_revrotate_ab(t_list **stack_a, t_list **stack_b);
-
-//alg_calc* files
-int		*ft_calc_push_a(t_list *stack_a, t_list *stack_b, int argc);
-int		*ft_calc_push_b(t_list *stack_a, t_list *stack_b, int argc);
-int		*ft_calc_rotate_a(t_list *stack_a, t_list *stack_b, int argc);
-int		*ft_calc_rotate_b(t_list *stack_a, t_list *stack_b, int argc);
-int		*ft_calc_rotate_ab(t_list *stack_a, t_list *stack_b, int argc);
-int		*ft_calc_revrotate_a(t_list *stack_a, t_list *stack_b, int argc);
-int		*ft_calc_revrotate_b(t_list *stack_a, t_list *stack_b, int argc);
-int		*ft_calc_revrotate_ab(t_list *stack_a, t_list *stack_b, int argc);
-int		*ft_calc_swap_a(t_list *stack_a, t_list *stack_b, int argc);
-int		*ft_calc_swap_b(t_list *stack_a, t_list *stack_b, int argc);
-int		*ft_calc_swap_ab(t_list *stack_a, t_list *stack_b, int argc);
-
-//alg_slices
-void	ft_makeslices(t_list **stack_a, t_list **stack_b, int argc);
-void	ft_pushback(t_list **stack_a, t_list **stack_b);
-void	ft_finalrotation(t_list **stack, int argc);
-
-void	ft_free_stack(t_list **stack);
 
 #endif

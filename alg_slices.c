@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alg_slices.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:47:21 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/19 18:43:55 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/20 12:14:13 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	ft_makeslices(t_list **stack_a, t_list **stack_b, int argc)
 	t_list	*temp;
 
 	counter = 0;
-	while (counter < argc - 3 && !ft_checkifsorted(stack_a, argc))
+	while (counter < argc - 3)
 	{
+		if (ft_checkifordered(stack_a, argc))
+			return ;
 		temp = *stack_a;
 		if (temp->rank != 1 && temp->rank != argc - 1)
 		{
@@ -32,46 +34,39 @@ void	ft_makeslices(t_list **stack_a, t_list **stack_b, int argc)
 		else
 			ft_do_rotate_a(stack_a);
 	}
+	ft_pushback(stack_a, stack_b);
 }
 
 void	ft_pushback(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*temp_a;
-	t_list	*temp_b;
 	int		counter;
 
 	counter = 0;
-	temp_a = *stack_a;
-	temp_b = *stack_b;
-	while (temp_b && counter < 100)
+	while (*stack_b)
 	{
-		if (temp_b->rank < temp_a->rank && temp_b->rank > ft_lstlast(temp_a)->rank)
+		if ((*stack_b)->rank < (*stack_a)->rank
+			&& (*stack_b)->rank > ft_lstlast(*stack_a)->rank)
 			ft_do_push_a(stack_a, stack_b);
 		else
-			ft_do_rotate_a(stack_a);
+		{
+			if (ft_rotatedirection(stack_a,
+					ft_getinsertionrank(stack_a, (*stack_b)->rank)) == 1)
+				ft_do_rotate_a(stack_a);
+			else
+				ft_do_revrotate_a(stack_a);
 		// else if (ft_delta(temp_b->rank, temp_a->rank) > ft_delta(temp_b->rank, ft_lstlast(temp_a)->rank))
 		// 	ft_do_revrotate_b(stack_b);
 		// else
 		// 	ft_do_rotate_b(stack_b);
-		temp_a = *stack_a;
-		temp_b = *stack_b;
+		}
 		counter++;
 	}
 	printf("counter: %i\n", counter);
 }
 
-void	ft_finalrotation(t_list **stack, int argc)
+void	ft_finalrotation(t_list **stack)
 {
-	t_list	*temp;
-	int		rotate;
-
-	rotate = 0;
-	while (temp->rank != 1)
-	{
-		rotate++;
-		temp = temp->next;
-	}
-	if (rotate <= (argc - 1) / 2)
+	if (ft_rotatedirection(stack, 1) == 1)
 	{
 		while ((*stack)->rank != 1)
 			ft_do_rotate_a(stack);
