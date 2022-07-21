@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/21 00:44:23 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/21 21:21:18 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		return (write(2, "Error\n", 6));
 	stack_b = NULL;
-	if (ft_checkifdone(&stack_a, &stack_b, argc))
+	if (ft_checkifdone(&stack_a, &stack_b))
 	{
 		ft_free_stack(&stack_a);
-		return (write(1, "\n", 1));
+		//return (write(1, "\n", 1));
+		return(0) ;
 	}
-	ft_makeslices(&stack_a, &stack_b, argc);
+	ft_algo_main(&stack_a, &stack_b, argc);
 	ft_finalrotation(&stack_a);
 	ft_free_stack(&stack_a);
 }

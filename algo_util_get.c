@@ -6,19 +6,11 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:05:20 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/21 08:57:54 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/21 21:27:21 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_getrankdelta(int i, int j)
-{
-	i -= j;
-	if (i < 0)
-		return (i * -1);
-	return (i);
-}
 
 /*
 0 -> don't rotate
@@ -44,22 +36,38 @@ int	ft_getrotatedir(t_list **stack, int noderank)
 	return (2);
 }
 
-int	ft_getinsertionrank(t_list **stack, int noderank, int argc)
+/*
+Returns the rank of the node that should be at the top of
+stack_a so the node at the top of stack_b will be in the
+correct order in stack_a after having been moved there.
+Usually, this returns the node with the next highest rank.
+If stack_b has higher rank than all nodes in stack_a, the lowest
+ranked node of stack_a is returned.
+*/
+int	ft_getinsertionrank(t_list **stack, int noderank)
 {
 	t_list	*temp;
-	t_list	*currentsave;
+	t_list	*save;
+	t_list	*highnode;
+	t_list	*lownode;
 
 	temp = *stack;
-	while (temp->rank < noderank)
+	highnode = ft_gethighrank(stack);
+	lownode = ft_getlowrank(stack);
+	if (noderank > highnode->rank)
+		return (lownode->rank);
+	if (noderank < lownode->rank)
+		return (highnode->rank);
+	while (noderank > temp->rank)
 		temp = temp->next;
-	currentsave = temp;
+	save = temp;
 	while (temp)
 	{
-		if (temp->rank < noderank && temp->rank > currentsave->rank)
-			currentsave = temp;
+		if (noderank > temp->rank && temp->rank > save->rank)
+			save = temp;
 		temp = temp->next;
 	}
-	return (currentsave->rank);
+	return (save->rank);
 }
 
 /*
@@ -69,16 +77,61 @@ int	ft_getinsertionrank(t_list **stack, int noderank, int argc)
 */
 int	ft_getswappable(t_list **stack_a, t_list **stack_b, int argc)
 {
+	t_list	*highnode;
+	t_list	*lownode;
+
+	highnode = ft_gethighrank(stack_a);
+	lownode = ft_getlowrank(stack_a);
 	if ((*stack_a)->rank == (*stack_a)->next->rank + 1
-		|| ((*stack_a)->rank == 1 && (*stack_a)->next->rank == argc - 1))
+		|| (*stack_a == lownode && (*stack_a)->next == highnode))
 	{
 		if (*stack_b && (*stack_b)->next)
 		{
-			if ((*stack_b)->rank < (*stack_b)->next->rank)
+			if ((*stack_b)->rank < (*stack_b)->next->rank
+				|| ((*stack_b)->rank == argc - 1
+					&& (*stack_b)->next->rank == 1))
 				return (2);
 		}
 		else
 			return (1);
 	}
 	return (0);
+}
+
+/*
+Returns the node with the highest rank in the stack.
+*/
+t_list	*ft_gethighrank(t_list **stack)
+{
+	t_list	*temp;
+	t_list	*save;
+
+	temp = *stack;
+	save = temp;
+	while (temp)
+	{
+		if (temp->rank > save->rank)
+			save = temp;
+		temp = temp->next;
+	}
+	return (save);
+}
+
+/*
+Returns the node with the lowest rank in the stack.
+*/
+t_list	*ft_getlowrank(t_list **stack)
+{
+	t_list	*temp;
+	t_list	*save;
+
+	temp = *stack;
+	save = temp;
+	while (temp)
+	{
+		if (temp->rank < save->rank)
+			save = temp;
+		temp = temp->next;
+	}
+	return (save);
 }
