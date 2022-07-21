@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:58:14 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/21 11:53:38 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/22 01:18:09 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,12 @@ t_list	*ft_getfirstunranked(t_list **stack);
 
 //algo_util_check
 int		ft_checkifordered(t_list **stack);
-int		ft_checkifdone(t_list **stack_a, t_list **stack_b);
-
-//algo_util_set
-void	ft_setnextunordered(t_list **stack);
 
 //algo_main
 void	ft_algo_main(t_list **stack_a, t_list **stack_b, int argc);
 void	ft_pushback(t_list **stack_a, t_list **stack_b);
 void	ft_finalrotation(t_list **stack);
+void	ft_setnextunordered(t_list **stack);
 
 //algo_util_get
 int		ft_getrotatedir(t_list **stack, int noderank);

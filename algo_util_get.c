@@ -41,7 +41,7 @@ Returns the rank of the node that should be at the top of
 stack_a so the node at the top of stack_b will be in the
 correct order in stack_a after having been moved there.
 Usually, this returns the node with the next highest rank.
-If stack_b has higher rank than all nodes in stack_a, the lowest
+But: If stack_b has higher rank than all nodes in stack_a, the lowest
 ranked node of stack_a is returned.
 */
 int	ft_getinsertionrank(t_list **stack, int noderank)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_util_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:50:54 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/21 21:19:35 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/22 01:17:30 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	ft_checkifordered(t_list **stack)
 
 	highnode = ft_gethighrank(stack);
 	lownode = ft_getlowrank(stack);
-	/* printf("highnode in ordercheck:%i\n", highnode->rank);
-	printf("lownode in ordercheck:%i\n", lownode->rank); */
 	temp = *stack;
 	while (temp)
 	{
@@ -43,18 +41,5 @@ int	ft_checkifordered(t_list **stack)
 			return (0);
 		temp = temp->next;
 	}
-	/* printf("return1 from checkifordered\n"); */
 	return (1);
 }
-
-int	ft_checkifdone(t_list **stack_a, t_list **stack_b)
-{
-	if (!ft_checkifordered(stack_a) || (*stack_a)->rank != 1 || *stack_b)
-		return (0);
-	return (1);
-}
-
-/* int	ft_checkifcomplete(t_list **stack)
-{
-	
-} */

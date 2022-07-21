@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:47:21 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/21 21:29:19 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/22 01:20:15 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,38 @@ void	ft_algo_main(t_list **stack_a, t_list **stack_b, int argc)
 }
 
 /*
-This function is called when stack_a is ordered. Doesn't mean stack_a is
-complete, just that its contents are completely in the correct order.
+Sets the next unordered node to the top of the stack.
+*/
+void	ft_setnextunordered(t_list **stack)
+{
+	t_list	*temp;
+	int		rotate;
+
+	//insert a checker into nextunordered to see if b can be
+	//pushed while setting next unordered?
+	//also: it only rotates once in the direction of the found node
+	//shouldnt be a problem but is not very clean, erros may occur in between 
+	//while runs in main algo?
+	temp = ft_getnextunordered(stack);
+	if (!temp)
+		return ;
+	//printf("getnextunordered (in setnextunordered):%i\n", temp->rank);
+	rotate = ft_getrotatedir(stack, temp->rank);
+	if (rotate == 1)
+	{
+		while ((*stack)->rank != temp->rank)
+			ft_do_rotate_a(stack);
+	}
+	else if (rotate == 2)
+	{
+		while ((*stack)->rank != temp->rank)
+			ft_do_revrotate_a(stack);
+	}
+}
+
+/*
+Returns the nodes to stack_a. Is called when stack_a is ordered - not necessarily
+complete.
 */
 void	ft_pushback(t_list **stack_a, t_list **stack_b)
 {
