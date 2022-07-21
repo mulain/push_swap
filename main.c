@@ -6,7 +6,7 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:04:38 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/20 13:02:22 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/21 00:44:23 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	/* t_list	*temp; */
 
 	if (argc < 3)
 		return (0);
@@ -32,22 +31,5 @@ int	main(int argc, char **argv)
 	}
 	ft_makeslices(&stack_a, &stack_b, argc);
 	ft_finalrotation(&stack_a);
-
-	/* temp = stack_a;
-	printf("\nStack A:\n");
-	printf("________\n");
-	while (temp)
-	{
-		printf("rank: %i\n", temp->rank);
-		temp = temp->next;
-	}
-	temp = stack_b;
-	printf("\nStack B:\n");
-	printf("________\n");
-	while (temp)
-	{
-		printf("rank: %i\n", temp->rank);
-		temp = temp->next;
-	} */
 	ft_free_stack(&stack_a);
 }

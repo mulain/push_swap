@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alg_slices.c                                       :+:      :+:    :+:   */
+/*   algo_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:47:21 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/20 13:22:57 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/21 08:54:42 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,30 @@
 
 void	ft_makeslices(t_list **stack_a, t_list **stack_b, int argc)
 {
-	int		counter;
-	t_list	*temp;
+	int		swap;
 
-	counter = 0;
-	while (counter < argc - 3)
+	while (!ft_checkifordered(stack_a, argc))
 	{
-		if (ft_checkifordered(stack_a, argc))
-			return (ft_pushback(stack_a, stack_b));
-		temp = *stack_a;
-		if (temp->rank != 1 && temp->rank != argc - 1)
+		swap = ft_getswappable(stack_a, stack_b, argc);
+		if (swap == 1)
+			ft_do_swap_a(stack_a);
+		if (swap == 2)
+			ft_do_swap_ab(stack_a, stack_b);
+		if (swap == 0)
 		{
-			if (temp->rank == temp->next->rank + 1) //maybe work with delta?
-				ft_do_swap_a(stack_a);
-			else
-				ft_do_push_b(stack_a, stack_b); //identify node to swap. either node not in order (or surpassing an acceptable delta), or maybe detect a node cluster?
-			counter++;
+			ft_setnextunordered(stack_a, argc);
+			//insert a checker into nextunordered to see if b can be
+			//pushed while setting next unordered?
+			ft_do_push_b(stack_a, stack_b);
 		}
-		else
-			ft_do_rotate_a(stack_a);
 	}
 	ft_pushback(stack_a, stack_b);
 }
 
 void	ft_pushback(t_list **stack_a, t_list **stack_b)
 {
+/* 	t_list	*temp;
+ */	
 	while (*stack_b)
 	{
 		if ((*stack_b)->rank < (*stack_a)->rank
@@ -46,15 +45,30 @@ void	ft_pushback(t_list **stack_a, t_list **stack_b)
 			ft_do_push_a(stack_a, stack_b);
 		else
 		{
+			//printsection____________________________________
+			/* temp = *stack_a;
+			printf("\nStack A:\n");
+			printf("________\n");
+			while (temp)
+			{
+				printf("rank: %i\n", temp->rank);
+				temp = temp->next;
+			}
+			temp = *stack_b;
+			printf("\nStack B:\n");
+			printf("________\n");
+			while (temp)
+			{
+				printf("rank: %i\n", temp->rank);
+				temp = temp->next;
+			} */
+			//printsection____________________________________
+
 			if (ft_getrotatedir(stack_a,
 					ft_getinsertionrank(stack_a, (*stack_b)->rank)) == 1)
 				ft_do_rotate_a(stack_a);
 			else
 				ft_do_revrotate_a(stack_a);
-		// else if (ft_delta(temp_b->rank, temp_a->rank) > ft_delta(temp_b->rank, ft_lstlast(temp_a)->rank))
-		// 	ft_do_revrotate_b(stack_b);
-		// else
-		// 	ft_do_rotate_b(stack_b);
 		}
 	}
 }
@@ -66,7 +80,7 @@ void	ft_finalrotation(t_list **stack)
 		while ((*stack)->rank != 1)
 			ft_do_rotate_a(stack);
 	}
-	else
+	else if (ft_getrotatedir(stack, 1) == 2)
 	{
 		while ((*stack)->rank != 1)
 			ft_do_revrotate_a(stack);

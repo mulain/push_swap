@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_checking.c                                    :+:      :+:    :+:   */
+/*   algo_util_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:50:54 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/20 13:04:55 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/20 18:56:52 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,22 @@
 int	ft_checkifordered(t_list **stack, int argc)
 {
 	t_list	*temp;
+	t_list	*comparenode;
 
 	temp = *stack;
-	while (temp->next)
+	while (temp)
 	{
+		if (temp->next)
+			comparenode = temp->next;
+		else
+			comparenode = *stack;			
+
 		if (temp->rank == argc - 1)
 		{
-			if (temp->next->rank != 1)
+			if (comparenode->rank != 1)
 				return (0);
 		}
-		else if (temp->rank > temp->next->rank)
+		else if (temp->rank > comparenode->rank)
 			return (0);
 		temp = temp->next;
 	}
