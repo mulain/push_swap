@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_assignrank.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 11:32:52 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/17 14:15:30 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/22 01:26:08 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ It's just that instead of i = 0 and argc - 2, here i = 1 and argc - 1 is used.
 The first while loop uses i and argc - 2. Usually, argc - 1 would
 be used, because argc is still the initial argc including the 1 position
 for the program name. We have to decrement argc here again, because
-the if clause in the second while loop never modifies the last ranked node
-as it requires a higher node content do so. The last ranked node has the
+the if clause in the second while loop never modifies the last unranked node
+as it requires a higher node content do so. The last unranked node has the
 highest content and thus can never be modified by this if.
 The last node can be reached by ft_getfirstunranked because it is the last
 remaining unranked node.
