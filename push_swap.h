@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:58:14 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/22 01:18:09 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/22 21:12:12 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,13 @@ t_list	*ft_getlowrank(t_list **stack);
 
 //algo_util_get1
 t_list	*ft_getnextunordered(t_list **stack);
+t_list	*ft_getdiscrepancy(t_list **stack);
+int		ft_getuptrain(t_list *node, t_list **stack);
+int		ft_getdowntrain(t_list *node, t_list **stack);
 //int	ft_getrankdelta(int i, int j);
+
+//algo_util_get2
+int		ft_getnodeposition(t_list *node, t_list **stack);
 
 //util_operations
 void	ft_swap(t_list **stack);

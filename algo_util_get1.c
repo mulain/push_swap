@@ -6,20 +6,107 @@
 /*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:23:48 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/21 22:22:35 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/22 21:38:03 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	ft_getdowntrain(t_list *node, t_list **stack)
+{
+	t_list	*temp;
+	int		counter;
+
+	temp = *stack;
+	counter = 0;
+	while (temp != node)
+		temp = temp->next;
+	while (temp->next && temp->rank < temp->next->rank)
+	{
+		temp = temp->next;
+		counter++;
+	}
+	if (temp->rank > (*stack)->rank || (temp == ft_gethighrank(stack)
+			&& *stack == ft_getlowrank(stack)))
+	{
+		counter++;
+		while (temp != node)
+		{
+			if (temp->rank < temp->next->rank)
+			{
+				temp = temp->next;
+				counter++;
+			}
+			else
+				return (counter);
+		}
+	}
+	return (counter);
+}
+
 /*
-Return the first node that isn't in correct order.
-Usually, this returns a node that is not followed by a node with higher rank.
-But: If the node has the highest rank, it must be followed by the lowest rank to
-not be selected.
-Returns NULL if stack is ordered (regardless of stack being complete!).
+Returns the number of nodes in correct order upwards of  the node passed
+to the function.
 */
+int	ft_getuptrain(t_list *node, t_list **stack)
+{
+	t_list	*temp;
+	t_list	*lastnode;
+	int		counter;
+
+	temp = *stack;
+	lastnode = ft_lstlast(*stack);
+	counter = ft_getnodeposition(node, stack);
+	if ((*stack)->rank > lastnode->rank || (lastnode == ft_gethighrank(stack)
+			&& *stack == ft_getlowrank(stack)))
+	{
+		counter++;
+		while (node != lastnode)
+		{
+			temp = *stack;
+			while (temp->next != lastnode)
+				temp = temp->next;
+			if (temp->rank < lastnode->rank)
+			{
+				lastnode = temp;
+				counter++;
+			}
+			else
+				return (counter);
+		}
+	}
+	return (counter);
+}
+
 t_list	*ft_getnextunordered(t_list **stack)
+{
+	t_list	*firstnode;
+	t_list	*secondnode;
+	int		uptrain;
+	int		downtrain;
+
+	firstnode = ft_getdiscrepancy(stack);
+	printf("firstnode:%i\n", firstnode->rank);
+	if (!firstnode->next)
+		return (firstnode);
+	secondnode = firstnode->next;
+	uptrain = ft_getuptrain(firstnode, stack);
+	printf("uptrain:%i\n", uptrain);
+	downtrain = ft_getdowntrain(secondnode, stack);
+	printf("downtrain:%i\n", downtrain);
+	if (downtrain > uptrain)
+		return (firstnode);
+	if (uptrain > downtrain)
+		return (secondnode);
+	printf("getnextunordered: shouldnt reach this\n");
+	return (firstnode);
+}
+
+/*
+Returns the first node that isn't followed by a correct node.
+Returns NULL if stack is ordered (regardless of stack being complete or not).
+*/
+t_list	*ft_getdiscrepancy(t_list **stack)
 {
 	t_list	*temp;
 	t_list	*highnode;
@@ -28,14 +115,15 @@ t_list	*ft_getnextunordered(t_list **stack)
 	temp = *stack;
 	highnode = ft_gethighrank(stack);
 	lownode = ft_getlowrank(stack);
-	/* printf("highnode in getnextunordered:%i\n", highnode->rank);
-	printf("lownode in getnextunordered:%i\n", lownode->rank); */
+	/* printf("highnode in getdiscrepancy:%i\n", highnode->rank);
+	printf("lownode in getdiscrepancy:%i\n", lownode->rank); */
 	while (temp->next)
 	{
 		if (temp == highnode)
 		{
+			//printf("get discrepancy: ifhighnode\n");
 			if (temp->next != lownode)
-				return (temp);
+				return (temp); //->next was removed for trainspotting. was good if not using trains
 		}
 		else if (temp->rank > temp->next->rank)
 			return (temp);

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   algo_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmardin <wmardin@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: wmardin <wmardin@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:47:21 by wmardin           #+#    #+#             */
-/*   Updated: 2022/07/22 01:20:15 by wmardin          ###   ########.fr       */
+/*   Updated: 2022/07/22 21:43:11 by wmardin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+//./push_swap 1 3 2 4 5 6 8 7
 
 void	ft_algo_main(t_list **stack_a, t_list **stack_b, int argc)
 {
